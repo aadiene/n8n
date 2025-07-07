@@ -34,12 +34,14 @@ RUN apk update && apk add --no-cache \
 
 # Set up npm global package folder under /usr/local/share
 # Give it to non-root user node, already set up in base image
-RUN mkdir -p /usr/local/share/npm-global \
-  && chown -R node:node /usr/local/share/npm-global
-ENV NPM_CONFIG_PREFIX=/usr/local/share/npm-global
-ENV PATH=$PATH:/usr/local/share/npm-global/bin
+# RUN mkdir -p /usr/local/share/npm-global \
+#  && chown -R node:node /usr/local/share/npm-global
+# ENV NPM_CONFIG_PREFIX=/usr/local/share/npm-global
+# ENV PATH=$PATH:/usr/local/share/npm-global/bin
+
+RUN npm install -g @google/gemini-cli
 
 # From N8N's official Dockerfile
 # https://github.com/n8n-io/n8n/blob/master/docker/images/n8n/Dockerfile
-USER node
+# USER node
 ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
