@@ -1,6 +1,7 @@
 FROM n8nio/n8n:latest
 USER root
-RUN npm install -g @google/gemini-cli
+
+# RUN npm install -g @google/gemini-cli
 
 
 # Gemini CLI : https://github.com/google-gemini/gemini-cli/blob/main/Dockerfile
