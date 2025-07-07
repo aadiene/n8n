@@ -8,6 +8,8 @@ USER root
 # Base image of N8N: https://github.com/n8n-io/n8n/blob/master/docker/images/n8n-base/Dockerfile
 # Install minimal set of packages, then clean up
 RUN apk update && apk add --no-cache \
+  bash \
+  gcompat \
   bc \
 #   dnstools (bind-tools) \
   bind-tools \
@@ -29,8 +31,8 @@ RUN apk update && apk add --no-cache \
   rsync \
   socat \
   unzip \
-  && rm -rf /tmp/* /root/.npm /root/.cache/node /opt/yarn* \
-  && apk del apk-tools
+  && rm -rf /tmp/* /root/.npm /root/.cache/node /opt/yarn*
+#  && apk del apk-tools
 
 # Set up npm global package folder under /usr/local/share
 # Give it to non-root user node, already set up in base image
