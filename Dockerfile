@@ -40,6 +40,7 @@ ENV PATH=$PATH:/usr/local/share/npm-global/bin
 
 # From N8N's official Dockerfile
 # https://github.com/n8n-io/n8n/blob/master/docker/images/n8n/Dockerfile
-RUN npm install -g @google/gemini-cli
 USER node
+RUN npm install -g @google/gemini-cli
+RUN npm install -g @anthropic-ai/claude-code
 ENTRYPOINT ["tini", "--", "/docker-entrypoint.sh"]
